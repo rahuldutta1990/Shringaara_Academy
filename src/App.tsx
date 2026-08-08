@@ -15,6 +15,7 @@ import { Courses } from './pages/Courses';
 import { CourseDetail } from './pages/CourseDetail';
 import { Dashboard } from './pages/Dashboard';
 import { Admin } from './pages/Admin';
+import { InstructorPortal } from './pages/InstructorPortal';
 import { Privacy } from './pages/Privacy';
 import { Terms } from './pages/Terms';
 import { Faq } from './pages/Faq';
@@ -116,6 +117,8 @@ function MainApp() {
         )}
 
         {activeRoute === 'dashboard' && <Dashboard navigate={navigate} />}
+
+        {activeRoute === 'instructor-portal' && <InstructorPortal />}
 
         {activeRoute === 'admin' && <Admin />}
       </main>

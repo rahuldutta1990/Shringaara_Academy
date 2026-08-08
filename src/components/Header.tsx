@@ -14,6 +14,10 @@ export const Header: React.FC<HeaderProps> = ({ activeRoute, navigate }) => {
 
   const activeEnrollmentsCount = enrollments.length;
 
+  const isInstructorLoggedIn = typeof window !== 'undefined' && localStorage.getItem('shringaara_instructor_logged_in') === 'true';
+  const instructorId = typeof window !== 'undefined' ? localStorage.getItem('shringaara_instructor_logged_id') : null;
+  const instructorDisplayName = instructorId === 'ananya' ? 'Ananya' : instructorId === 'rohan' ? 'Rohan' : instructorId === 'maya' ? 'Maya' : instructorId === 'all' ? 'Admin' : 'Portal';
+
   const handleNav = (route: string) => {
     navigate(route);
     setMobileMenuOpen(false);
@@ -159,6 +163,16 @@ export const Header: React.FC<HeaderProps> = ({ activeRoute, navigate }) => {
           </button>
 
           <button
+            onClick={() => handleNav('instructor-portal')}
+            className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
+              activeRoute === 'instructor-portal' ? 'bg-slate-800 text-amber-400' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+            }`}
+          >
+            <ShieldCheck className="w-4 h-4 text-amber-400" />
+            <span>{isInstructorLoggedIn ? 'Instructor Portal' : 'Instructor Login'}</span>
+          </button>
+
+          <button
             onClick={() => handleNav('dashboard')}
             className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 relative ${
               activeRoute === 'dashboard' ? 'bg-slate-800 text-amber-400' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
@@ -202,6 +216,25 @@ export const Header: React.FC<HeaderProps> = ({ activeRoute, navigate }) => {
             >
               <User className="w-3.5 h-3.5" />
               <span>Student Login</span>
+            </button>
+          )}
+
+          {/* Instructor Login CTA */}
+          {isInstructorLoggedIn ? (
+            <button
+              onClick={() => handleNav('instructor-portal')}
+              className="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-purple-950/40 border border-purple-800/60 text-purple-300 hover:bg-purple-900/30 font-bold text-xs transition-all"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-purple-400 animate-pulse" />
+              <span className="max-w-[120px] truncate">Instructor: {instructorDisplayName}</span>
+            </button>
+          ) : (
+            <button
+              onClick={() => handleNav('instructor-portal')}
+              className="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 border border-purple-900/40 text-purple-400 hover:bg-slate-800 font-bold text-xs transition-all"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
+              <span>Instructor Login</span>
             </button>
           )}
 
@@ -283,6 +316,15 @@ export const Header: React.FC<HeaderProps> = ({ activeRoute, navigate }) => {
             <span className="flex items-center gap-2"><BookOpen className="w-4 h-4 text-amber-400" /> Courses Catalog</span>
           </button>
           <button
+            onClick={() => handleNav('instructor-portal')}
+            className="w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 text-sm flex items-center justify-between"
+          >
+            <span className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-amber-400" /> 
+              {isInstructorLoggedIn ? 'Instructor Portal' : 'Instructor Login'}
+            </span>
+          </button>
+          <button
             onClick={() => handleNav('dashboard')}
             className="w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 text-sm flex items-center justify-between"
           >
@@ -321,7 +363,32 @@ export const Header: React.FC<HeaderProps> = ({ activeRoute, navigate }) => {
                 className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-rose-400 font-bold text-xs"
               >
                 <LogOut className="w-4 h-4" />
-                <span>Log Out ({currentUserName})</span>
+                <span>Log Out Student ({currentUserName})</span>
+              </button>
+            )}
+
+            {/* Mobile Instructor Portal Quick Link */}
+            {isInstructorLoggedIn ? (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleNav('instructor-portal');
+                }}
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-purple-950/40 border border-purple-800/60 text-purple-300 font-bold text-sm"
+              >
+                <ShieldCheck className="w-4 h-4 text-purple-400 animate-pulse" />
+                <span>Instructor: {instructorDisplayName}</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleNav('instructor-portal');
+                }}
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-800 border border-purple-900/30 text-purple-400 font-bold text-sm"
+              >
+                <ShieldCheck className="w-4 h-4 text-purple-400" />
+                <span>Instructor Login / Gateway</span>
               </button>
             )}
 

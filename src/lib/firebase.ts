@@ -144,6 +144,20 @@ export async function deleteCourseFromFirestore(courseId: string): Promise<void>
 
 // --- ENROLLMENTS HELPERS ---
 
+export async function getAllEnrollmentsFromFirestore(): Promise<Enrollment[]> {
+  try {
+    const snapshot = await getDocs(collection(db, ENROLLMENTS_COL));
+    const list: Enrollment[] = [];
+    snapshot.forEach((d) => {
+      list.push({ id: d.id, ...d.data() } as Enrollment);
+    });
+    return list;
+  } catch (err) {
+    console.error('Error getting all enrollments from Firestore:', err);
+    return [];
+  }
+}
+
 export async function getUserEnrollmentsFromFirestore(email: string): Promise<Enrollment[]> {
   try {
     const q = query(

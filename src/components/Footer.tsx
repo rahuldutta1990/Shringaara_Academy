@@ -99,6 +99,11 @@ export const Footer: React.FC<FooterProps> = ({ navigate, openBookingModal }) =>
                 </button>
               </li>
               <li>
+                <button onClick={() => navigate('instructor-portal')} className="hover:text-amber-400 transition-colors">
+                  Instructor Portal
+                </button>
+              </li>
+              <li>
                 <button onClick={() => navigate('work')} className="hover:text-amber-400 transition-colors">
                   Work Portfolio
                 </button>
