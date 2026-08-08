@@ -1,0 +1,6 @@
+{
+  "name": "Shringaara Academy",
+  "description": "Technical training and services platform with calendar consultations, LMS courses, student portal, and hidden admin panel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

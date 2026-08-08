@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "courses": {
+      "title": { "type": "string" },
+      "slug": { "type": "string" },
+      "category": { "type": "string" },
+      "description": { "type": "string" },
+      "instructor": { "type": "string" },
+      "level": { "type": "string" },
+      "duration": { "type": "string" },
+      "rating": { "type": "number" },
+      "price": { "type": "number" },
+      "thumbnail": { "type": "string" },
+      "curriculum": { "type": "array" },
+      "featured": { "type": "boolean" },
+      "createdAt": { "type": "timestamp" }
+    },
+    "bookings": {
+      "userName": { "type": "string" },
+      "userEmail": { "type": "string" },
+      "userPhone": { "type": "string" },
+      "serviceCategory": { "type": "string" },
+      "scheduledDate": { "type": "string" },
+      "timeSlot": { "type": "string" },
+      "status": { "type": "string" },
+      "zoomUrl": { "type": "string" },
+      "zoomPasscode": { "type": "string" },
+      "notes": { "type": "string" },
+      "createdAt": { "type": "timestamp" }
+    },
+    "enrollments": {
+      "userId": { "type": "string" },
+      "userEmail": { "type": "string" },
+      "courseId": { "type": "string" },
+      "courseTitle": { "type": "string" },
+      "progressPercent": { "type": "number" },
+      "completedLessons": { "type": "array" },
+      "certificateId": { "type": "string" },
+      "enrolledAt": { "type": "timestamp" }
+    },
+    "users": {
+      "email": { "type": "string" },
+      "name": { "type": "string" },
+      "role": { "type": "string" },
+      "createdAt": { "type": "timestamp" }
+    },
+    "site_settings": {
+      "siteName": { "type": "string" },
+      "tagline": { "type": "string" },
+      "logoUrl": { "type": "string" },
+      "faviconUrl": { "type": "string" },
+      "contactEmail": { "type": "string" },
+      "contactPhone": { "type": "string" },
+      "address": { "type": "string" }
+    },
+    "admin_settings": {
+      "adminId": { "type": "string" },
+      "password": { "type": "string" }
+    },
+    "page_content": {
+      "title": { "type": "string" },
+      "subtitle": { "type": "string" },
+      "content": { "type": "string" },
+      "lastUpdated": { "type": "string" }
+    },
+    "email_notifications": {
+      "to": { "type": "string" },
+      "studentName": { "type": "string" },
+      "subject": { "type": "string" },
+      "courseTitle": { "type": "string" },
+      "transactionId": { "type": "string" },
+      "amountPaid": { "type": "number" },
+      "status": { "type": "string" },
+      "sentAt": { "type": "string" }
+    },
+    "course_qa_questions": {
+      "courseId": { "type": "string" },
+      "authorName": { "type": "string" },
+      "authorEmail": { "type": "string" },
+      "title": { "type": "string" },
+      "content": { "type": "string" },
+      "createdAt": { "type": "string" },
+      "isResolved": { "type": "boolean" },
+      "upvotes": { "type": "number" }
+    }
+  }
+}
