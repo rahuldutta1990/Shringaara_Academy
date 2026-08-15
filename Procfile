@@ -1,1 +1,1 @@
-web: npm run preview
+web: python3 -m http.server $PORT --directory dist
