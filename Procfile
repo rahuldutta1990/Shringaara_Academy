@@ -1,1 +1,1 @@
-web: python3 -m http.server $PORT --directory dist
+web: npx serve -s dist -l $PORT
