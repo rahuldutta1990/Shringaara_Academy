@@ -1,0 +1,7 @@
+dist/
+├── index.html          (your main HTML file)
+├── assets/             (folder with CSS, JS files)
+│   ├── main.xxxxx.js
+│   ├── style.xxxxx.css
+│   └── images/
+└── other files
